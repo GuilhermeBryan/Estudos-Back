@@ -1,0 +1,15 @@
+Banco de dados
+
+O banco de dados pode estar presente em qualquer lugar e independente do uso de tecnologia da informação.
+
+Exemplos
+Caderno
+Lista telefonica
+Agenda
+
+definição de banco de dados:coleção de dados persisntentes (a ideida de dados persistentes usada pelos sistemas de informação de uma determinada empresa) usada pelos sistemas de informação de uma determinada empresa.
+
+POSTGRESQL:que pode ser considerado um sistema gerenciador de banco de dados.
+
+SGBD (isola os usuarios dos detalhes do nivel de hardware, ou seja, nós vamos fazer a interação do banco de dados por meio do SGBD, utilizando a linguagem SQL:que fara o tratamento de requisições inclusões, alteração, consultas e exclusão. 
+
