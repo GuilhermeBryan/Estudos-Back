@@ -13,3 +13,14 @@ POSTGRESQL:que pode ser considerado um sistema gerenciador de banco de dados.
 
 SGBD (isola os usuarios dos detalhes do nivel de hardware, ou seja, nós vamos fazer a interação do banco de dados por meio do SGBD, utilizando a linguagem SQL:que fara o tratamento de requisições inclusões, alteração, consultas e exclusão. 
 
+
+variaveis: integers <- inteiro
+varchar e char <- caractere
+
+
+not null <- exige que o campo seja preenchido caso contrario dara erro
+
+varchar ira armazenar o numero de letras que você colocar
+char ira preencher com espaço caso você não coloque todas as letras
+
+obs:estou na aula 8
