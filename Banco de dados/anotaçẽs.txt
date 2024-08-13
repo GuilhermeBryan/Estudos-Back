@@ -16,6 +16,7 @@ SGBD (isola os usuarios dos detalhes do nivel de hardware, ou seja, nós vamos f
 
 variaveis: integers <- inteiro
 varchar e char <- caractere
+text <- texto livre
 
 
 not null <- exige que o campo seja preenchido caso contrario dara erro
