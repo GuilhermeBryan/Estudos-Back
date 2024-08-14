@@ -7,16 +7,25 @@ Caderno
 Lista telefonica
 Agenda
 
-definição de banco de dados:coleção de dados persisntentes (a ideida de dados persistentes usada pelos sistemas de informação de uma determinada empresa) usada pelos sistemas de informação de uma determinada empresa.
+definição de banco de dados:coleção de dados persisntentes (a ideia de dados persistentes usada pelos sistemas de informação de uma determinada empresa) usada pelos sistemas de informação de uma determinada empresa.
 
 POSTGRESQL:que pode ser considerado um sistema gerenciador de banco de dados.
 
 SGBD (isola os usuarios dos detalhes do nivel de hardware, ou seja, nós vamos fazer a interação do banco de dados por meio do SGBD, utilizando a linguagem SQL:que fara o tratamento de requisições inclusões, alteração, consultas e exclusão. 
 
+comandos SQL:create (tipo) 
+insert into (nome da tabela ou outra coisa criada)  (informar os campos que faremos a inserção) OBS:insert to significa inserir em 
+values (insira os dados que estão de acordo com o insert into) caso queira terminar o comando e fazer outra tabela com o mesmo algoritmo, utilize ";"
+quando um dado não tiver inserção insira o "null"
 
-variaveis: integers <- inteiro
+quando você inserir um values e quiser continuar o mesmo, basta copiar, colar, colocar os novos dados, não precisa repetir o comando value e dar virgula no anterior fechando com ";"
+
+tipos de variaveis: integers <- inteiro
 varchar e char <- caractere
 text <- texto livre
+constraint (restrição) 
+pk_ <- primary key (chave primaria, o campo unico que não pode ser repetido)
+EXEMPLO: constraint pk_(algum nome)_(nome da variavel) primary key (nome da variavel que não sera repetida)
 
 
 not null <- exige que o campo seja preenchido caso contrario dara erro
@@ -24,4 +33,10 @@ not null <- exige que o campo seja preenchido caso contrario dara erro
 varchar ira armazenar o numero de letras que você colocar
 char ira preencher com espaço caso você não coloque todas as letras
 
-obs:estou na aula 8
+caso você ja tenha executado e ter inserido outra parte ao codigo dara erro, por isso selecione a outra parte inserida e aí sim rode.
+
+caso de erro nas suas "atualizaões da tabela" você tera que renomear o que ser pedido
+
+SHIFT + ALT + SETA PRA BAIXO = clona a ultima linha
+
+obs:estou na aula 9
