@@ -1,4 +1,4 @@
-CREATE TABLE produto (
+CREATE TABLE produto  (
 	numeroidproduto integer not null,
 	nomeproduto varchar (50) not null,
 	cpfdocomprador char (11) not null,
@@ -11,7 +11,8 @@ CREATE TABLE produto (
 )
 
 
-insert into	produto (numeroidproduto, nomeproduto, cpfdocomprador, nomedocomprador, numero_de_compra, complementos)
+insert into	produto  (numeroidproduto, nomeproduto, cpfdocomprador, nomedocomprador, numero_de_compra, complementos)
 values
-	(2342, 'Action Figure', '87509235678', 'João Pedro Carvalho', 23043, null),
-	(6457, 'Gabinete New X PC', '986502139514', 'Gustavo Almeida', 32421, null);
+	(2342, 'Action Figure', '98247292012', 'João Pedro Carvalho', 23043, null),
+	(6457, 'Gabinete New X PC', '39430120592', 'Gustavo Almeida', 32421, null);
+

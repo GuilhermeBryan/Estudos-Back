@@ -16,7 +16,7 @@ SGBD (isola os usuarios dos detalhes do nivel de hardware, ou seja, nós vamos f
 comandos SQL:create (tipo) 
 insert into (nome da tabela ou outra coisa criada)  (informar os campos que faremos a inserção) OBS:insert to significa inserir em 
 values (insira os dados que estão de acordo com o insert into) caso queira terminar o comando e fazer outra tabela com o mesmo algoritmo, utilize ";"
-quando um dado não tiver inserção insira o "null"
+quando um dado não tiver inserção insira o "null" sem aspas
 
 quando você inserir um values e quiser continuar o mesmo, basta copiar, colar, colocar os novos dados, não precisa repetir o comando value e dar virgula no anterior fechando com ";"
 
