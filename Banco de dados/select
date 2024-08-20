@@ -1,0 +1,40 @@
+consulta simples:comando select
+
+select * from (nome dado a sua criação) <- significa que ira selecionar tudo
+
+select (nome da variavel) from (nome dado a sua criação) <- para localizar as informações dessa váriavel
+
+você pode usar mais variaveis utilizando ",".
+
+vamos aprender a selecionar somente caracteres especificos que se encaixam em determinada condição.
+
+where <- onde. EX: select data_de_nascimento from cliente where data_de_nascimento < '2000-01-20';
+
+like <- igual. EX: select nome from cliente where nome like 'C%';
+
+OBS:vamos supor que você queira achar uma pessoa que tem o nome começando com G, para isso no like você usara '(letra)%', o porcentagem significa q há outros caracteres após a letra, mas caso a letra estiver em alguma posição aleatória, basta fazer '%(letra)%'.
+
+select (nomedavariavel) from (nome da criação) where (nome da variavel) like '(alguma letra)%'; <- isto serve para encontrarmos as informações que apenas tenham aquela letra em especifico e o % significa que pode haver mais alguns caracteres, mas o primario seria o selecionado. EX: select nomedocomprador from produto where nomedocomprador like 'G%';
+
+between <- entre
+and <- e
+
+EX: select data_de_nascimento from cliente where data_de_nascimento between '1998-01-01' and '1982-01-01';
+
+isso teoricamente faria filtrar as datas de nascimento das pessoas entre 1998 e 1982
+
+e o mais simples seria o "null", para filtrar campos onde não há nada
+
+EX: select cpf from cliente where cpf is null; ou select * from cliente where * is  null;
+
+para retornar em ordem alfabética basta usar "order by". EX: select nome from cliente order by nome;
+
+e de forma decrescente sera order by seguido de desc. EX: select nome from cliente order by nome desc;
+
+obs: também funciona asc que significa ordem ascendente, onde ira filtrar de forma correta, crescente ou alfabética.
+
+
+
+
+
+

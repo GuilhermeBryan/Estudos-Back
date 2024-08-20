@@ -13,12 +13,6 @@ POSTGRESQL:que pode ser considerado um sistema gerenciador de banco de dados.
 
 SGBD (isola os usuarios dos detalhes do nivel de hardware, ou seja, nós vamos fazer a interação do banco de dados por meio do SGBD, utilizando a linguagem SQL:que fara o tratamento de requisições inclusões, alteração, consultas e exclusão. 
 
-comandos SQL:create (tipo) 
-insert into (nome da tabela ou outra coisa criada)  (informar os campos que faremos a inserção) OBS:insert to significa inserir em 
-values (insira os dados que estão de acordo com o insert into) caso queira terminar o comando e fazer outra tabela com o mesmo algoritmo, utilize ";"
-quando um dado não tiver inserção insira o "null" sem aspas
-
-quando você inserir um values e quiser continuar o mesmo, basta copiar, colar, colocar os novos dados, não precisa repetir o comando value e dar virgula no anterior fechando com ";"
 
 tipos de variaveis: integers <- inteiro
 varchar e char <- caractere
@@ -39,4 +33,4 @@ caso de erro nas suas "atualizaões da tabela" você tera que renomear o que ser
 
 SHIFT + ALT + SETA PRA BAIXO = clona a ultima linha
 
-obs:estou na aula 9
+obs:estou na aula 14

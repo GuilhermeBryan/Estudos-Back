@@ -1,0 +1,15 @@
+comandos SQL:create (tipo) 
+insert into (nome da tabela ou outra coisa criada)  (informar os campos que faremos a inserção) OBS:insert to significa inserir em 
+values (insira os dados que estão de acordo com o insert into) caso queira terminar o comando e fazer outra tabela com o mesmo algoritmo, utilize ";"
+quando um dado não tiver inserção insira o "null" sem aspas
+
+quando você inserir um values e quiser continuar o mesmo, basta copiar, colar, colocar os novos dados, não precisa repetir o comando value e dar virgula no anterior fechando com ";"
+
+podemos renomear o campo com o cadeado usando "as". EX:select data_nascimento as "Data de nascimento" from cliente;
+
+|| <- significa concatenar, ou seja, juntar as coisas. EX: select 'CPF': || cpf from cliente;
+
+comando "limit" significa quais as primeiras colunas você deseja selecionar. EX: select * from cliente limit 3;
+
+você pode utilizar , para consultar mais coisas especificas
+
