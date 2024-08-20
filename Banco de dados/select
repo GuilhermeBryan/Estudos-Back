@@ -33,6 +33,8 @@ e de forma decrescente sera order by seguido de desc. EX: select nome from clien
 
 obs: também funciona asc que significa ordem ascendente, onde ira filtrar de forma correta, crescente ou alfabética.
 
+obs:você pode utilizar or e and, and é quando é obrigatório de ter outra coisa e o or é quando há chance.
+
 
 
 
