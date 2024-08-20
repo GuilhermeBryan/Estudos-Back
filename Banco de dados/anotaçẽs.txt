@@ -33,4 +33,4 @@ caso de erro nas suas "atualizaões da tabela" você tera que renomear o que ser
 
 SHIFT + ALT + SETA PRA BAIXO = clona a ultima linha
 
-obs:estou na aula 14
+obs:estou na aula 17
