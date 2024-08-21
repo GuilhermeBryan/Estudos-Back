@@ -1,0 +1,22 @@
+update & delete
+
+UPDATE:serve para alterar, ou seja, literalmente alterar a tabela, e caso seja para alterar um campo especifico, utilize o "where" ja visto anteriormente.
+
+EX:update (nome da tabela) set (nome da váriavel) = '(sua alteração)' where (chave primaria ou identificação do dado que você deseja alterar);
+
+update produto set nome = 'teste' where idcliente = '1'
+
+update produto set nome = 'teste' <- caso faça sem o where, a tabela toda sera alterada
+
+lembrando que você pode alterar mais variaveis utilizando o , e o mesmo comando respectivo.
+
+lembrando sempre da utilização do "set"
+
+DELETE:seu algoritmo é igual ao update, mas ele removera uma coluna de sua tabela ou a tabela toda
+EX: delete from (nome da tabela) where (nome da variavel e seu identificador);
+
+delete from tabelafinal where idcliente = '16';
+
+obs:quando for deletar mais de um utilize o comando "in"
+
+

@@ -94,4 +94,43 @@ CREATE TABLE tabelafinal (
 
 	--nome do cliente, logradouro, numero, complemento, bairro, municipio e uf concatenado de todos clientes
 
-	select  'concatenados: ' || nome ||'\' || logradouro || '\'|| numero || '\' || complemento || '\' || bairro || '\' || municipio || '\' || uf as "concatenação" from tabelafinal;
+	select  'concatenados: ' || nome ||'\' || logradouro || '\'|| numero || '\' || complemento || '\' || bairro || '\' || municipio || '\' || uf as "concatenação" from tabelafinal
+
+	--update e delete
+
+	update tabelafinal set nome = 'Cabral' where idcliente = '10'
+	delete from tabelafinal where idcliente = '10';
+
+	update tabelafinal set idcliente = '10' where idcliente = '11';
+	update tabelafinal set idcliente = '11' where idcliente = '12';
+	update tabelafinal set idcliente = '12' where idcliente = '13';
+	update tabelafinal set idcliente = '13' where idcliente = '14';
+
+	delete from tabelafinal where nome = 'Jessica';
+
+	--exercicios
+	--inserindo clientes
+	insert into tabelafinal (idcliente, nome, cpf, rg, data_de_nascimento, sexo, profissao, nacionalidade, logradouro, numero, complemento, bairro, municipio, uf)
+	values 
+		(14, 'Maicon', '12349596421', '1234','10/10/1965','F','Empresario', null, null, null, null, null, 'Florianopolis', 'PR'),
+		(15, 'Getulio', null, '4631', null, 'F', 'Estudante', 'Brasileira', 'Rua Central', '343', 'Apartamento', 'Centro', 'Curitiba', 'SC'),
+		(16, 'Sandra', null, null, null,'F','Professor', 'Italiana', null, '12', 'Bloco A', null, null, null);
+
+	--fazendo updates do maicon
+
+	update tabelafinal set cpf = '45390569432', sexo = 'M', nacionalidade = 'Brasileira', uf = 'SC' where idcliente = '14';
+
+	--alterando dados do getulio
+
+	update tabelafinal set data_de_nascimento = '01/04/1978', sexo = 'M' where idcliente = '15';
+
+	--alterando dados da Sandra
+
+	update tabelafinal set sexo = 'F', profissao = 'Professora', numero = '123' where idcliente = '16';
+
+	--fazendo o delete
+
+	delete from tabelafinal where idcliente in (14, 16);
+
+
+		
