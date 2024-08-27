@@ -1,6 +1,6 @@
 update & delete
 
-UPDATE:serve para alterar, ou seja, literalmente alterar a tabela, e caso seja para alterar um campo especifico, utilize o "where" ja visto anteriormente.
+UPDATE:serve para alterar, ou seja, literalmente alterar os dados da tabela, e caso seja para alterar um dado/campo especifico, utilize o "where" ja visto anteriormente.
 
 EX:update (nome da tabela) set (nome da váriavel) = '(sua alteração)' where (chave primaria ou identificação do dado que você deseja alterar);
 

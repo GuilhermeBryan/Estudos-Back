@@ -131,6 +131,217 @@ CREATE TABLE tabelafinal (
 	--fazendo o delete
 
 	delete from tabelafinal where idcliente in (14, 16);
+	
+	-- nova tabela para profissao
+
+create table profissoes (
+	idprofissao integer not null,
+	nomedaprofissao varchar (50) not null,
+
+	constraint pk_prof_idprof primary key (idprofissao),
+	
+	constraint unq_prof_ unique (nomedaprofissao)
+)
+
+select * from profissoes
+
+insert into profissoes (idprofissao, nomedaprofissao)
+	values
+		(1, 'Pedreiro'),
+		(2, 'Estudante'),
+		(3, 'Jornalista'),
+		(4, 'professor');
+		
+select profissao from tabelafinal
+
+--tabela para nacionalidade
+
+create table nacionalidades(
+	idnacionalidade integer not null,
+	nomenacional varchar (50) not null,
+
+constraint pk_nac_idnacionalidade primary key (idnacionalidade),
+
+constraint unq_nac_nomenacional unique (nomenacional)
+
+)
+
+select nacionalidade from tabelafinal
+
+insert into nacionalidades (idnacionalidade, nomenacional)
+values 
+	(1, 'Brasileira'),
+	(2, 'Alemã'),
+	(3, 'Italiana'),
+	(4, 'Norte-Ameriacana');
+
+select * from nacionalidades
+
+--tabela de complemento
+
+create table complemento(
+	idcomplemento integer not null,
+	nomecomplemento varchar (50) not null,
+
+	constraint pk_compl_idcomplemento primary key (idcomplemento),
+	
+	constraint uniq_compl_nomecompl unique (nomecomplemento)
+
+	
+	
+)
+
+insert into complemento (idcomplemento, nomecomplemento)
+	values
+		(1, 'Casa'),
+		(2, 'Apartamento');
+	
+select complemento from tabelafinal 
+select * from complemento
+
+
+--criando a tabela do bairro
+
+CREATE TABLE bairro (
+	idbairro integer not null,
+	nomebairro varchar (50) not null,
+
+	constraint pk_idbairro_bairrotab primary key (idbairro)
+	constraint unq_nome_tabbairro unique (nomebairro)
+)
+
+insert into bairro (idbairro, nomebairro)
+	values
+		(1, 'Cidade Nova'),
+		(2, 'Centro'),
+		(3, 'São Pedro'),
+		(4, 'Santa Rosa');
+
+
+select bairro from tabelafinal
+
+select * from tabelafinal
+
+select * from profissoes
+
+--anotação de profissões
+--1 pedreiro, 3
+--2 estudante, 1 9 11 14
+--3 jornalista 4 5
+--4 professor 6 7 8 9
+-- NULL 
+
+alter table tabelafinal drop profissao 
+alter table tabelafinal add profissao integer 
+alter table tabelafinal add constraint fk_tabfinal_profissao foreign key (profissao) references profissoes (idprofissao)
+
+
+update tabelafinal set profissao =  1 where idcliente = 3;
+update tabelafinal set profissao =  2 where idcliente in (1, 9, 11, 14);
+update tabelafinal set profissao =  3 where idcliente in (4, 5);
+update tabelafinal set profissao =  4 where idcliente in (6, 7, 8, 9);
+
+select * from nacionalidades
+
+select * from tabelafinal
+
+--anotação de nacionalidades
+--1 Brasil, 1 2 4 5 6 7 9 11
+--2 Alemanha 3, 14 
+--3 Italia 10, 12
+--4 America do norte, 13
+
+alter table tabelafinal drop nacionalidade
+alter table tabelafinal add nacionalidade integer
+alter table tabelafinal add constraint fk_tabfinal_nacionalidade foreign key (nacionalidade) references nacionalidades (idnacionalidade)
+
+update tabelafinal set nacionalidade = 1 where idcliente in (1, 2, 4, 5, 6, 7, 9, 11);
+update tabelafinal set nacionalidade = 2 where idcliente in (3, 14);
+update tabelafinal set nacionalidade = 3 where idcliente in (10, 12);
+update tabelafinal set nacionalidade = 4 where idcliente = 3;
+
+select * from tabelafinal
+
+--anotação de complemento 
+--1 Casa, 
+--2 Apartamento, 
+
+select * from tabelafinal 
+select * from complemento
+
+alter table tabelafinal drop complemento
+alter table tabelafinal add complemento integer
+alter table tabelafinal add constraint pk_tabfinal_idcomplemento foreign key (complemento) references complemento (idcomplemento)
+
+update tabelafinal set complemento = 1 where idcliente in (5, 7, 11, 13);
+update tabelafinal set complemento = 2 where idcliente in (2, 9, 8, 10, 14);
+
+--anotação de bairro 
+select * from bairro 
+--1 Cidade Nova, 
+--2 Centro, 
+--3 São Pedro,
+--4 Santa Rosa,
+
+alter table tabelafinal drop bairro
+alter table tabelafinal add bairro integer
+alter table tabelafinal add constraint pk_tabfinal_idbairro foreign key (bairro) references bairro (idbairro)
+
+update tabelafinal set bairro = 1 where idcliente in (2, 5, 8);
+update tabelafinal set bairro = 2 where idcliente in (1, 4, 6, 11, 12, 13);
+update tabelafinal set bairro = 3 where idcliente in (3, 9);
+update tabelafinal set bairro = 4 where idcliente = 10;
+
+CREATE TABLE uf (
+	iduf integer not null,
+	nomeuf varchar (30) not null,
+	sigla varchar (2) not null,
+	
+	constraint pk_iduf_uftab primary key (iduf),
+	constraint unq_ufnome_tabuf unique (nomeuf),
+	constraint unq_sigla_tabuf unique (sigla)
+)
+
+insert into uf (iduf, nomeuf, sigla)
+	values (1, 'Santa Catarina', 'SC'),
+	 	   (2, 'Parana', 'PR'),
+		   (3, 'São Paulo', 'SP'),
+		   (4, 'Rio de Janeiro', 'RJ'),
+		   (5, 'Minas Gerais', 'MG'),
+		   (6, 'Rio Grande do Sul', 'RS');
+
+
+select * from uf
+select uf from tabelafinal
+select * from tabelafinal
+
+	CREATE TABLE municipio (
+	idmunicipio integer not null,
+	nomemunicipio varchar (30) not null,
+	iduf integer not null,
+
+	constraint pk_idmun primary key (idmunicipio),
+	constraint unq_nomemun unique (nomemunicipio),
+	constraint fk_iduf foreign key (iduf) references uf (iduf)
+	)
+
+	insert into municipio (idmunicipio, nomemunicipio, iduf)
+		values
+			(1, 'Curitiba', 2),
+			(2, 'General Carneiro', 2),
+			(3, 'Uberlância', 5 ),
+			(4, 'Porto União', 1),
+			(5, 'Porto Vitória', 2),
+			(6, 'São Paulo', 3),
+			(7, 'União da Vitória', 2 ),
+			(8, 'Canoinhas Porto Alegre', 6 ),
+			(9, 'Rio de Janeiro', 4 );
+
+select municipio from tabelafinal
+select uf from tabelafinal
+
+select * from tabelafinal
+
 
 
 		

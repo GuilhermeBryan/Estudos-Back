@@ -19,8 +19,10 @@ varchar e char <- caractere
 text <- texto livre
 constraint (restrição) 
 pk_ <- primary key (chave primaria, o campo unico que não pode ser repetido)
-EXEMPLO: constraint pk_(algum nome)_(nome da variavel) primary key (nome da variavel que não sera repetida)
-
+EXEMPLO: constraint pk_(algum nome)_(nome da variavel) primary key (nome da variavel que não sera repetida) e se tornara chave primaria
+unique <- funciona igual a chave primaria, mas ela não é chave primaria, mas ira restringir o campo que tera esse comando utilizado
+EX:constraint unk_prof unique (prof)
+Drop Table (nome da tabela) ira excluir sua tabela
 
 not null <- exige que o campo seja preenchido caso contrario dara erro
 
