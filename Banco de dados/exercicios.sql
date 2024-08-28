@@ -334,14 +334,122 @@ select * from tabelafinal
 			(5, 'Porto Vitória', 2),
 			(6, 'São Paulo', 3),
 			(7, 'União da Vitória', 2 ),
-			(8, 'Canoinhas Porto Alegre', 6 ),
-			(9, 'Rio de Janeiro', 4 );
+			(8, 'Canoinhas', 6 ),
+			(9, 'Rio de Janeiro', 4 ),
+		insert into municipio (idmunicipio, nomemunicipio, iduf)
+			values
+				(10, 'Porto Alegre', 6);
 
 select municipio from tabelafinal
 select uf from tabelafinal
 
 select * from tabelafinal
 
+select * from municipio
+
+alter table tabelafinal drop municipio 
+alter table tabelafinal add municipio integer
+alter table tabelafinal add constraint fk_tabfinal_mun foreign key (municipio) references municipio (idmunicipio)
+
+update tabelafinal set municipio = 1 where idcliente = 15;
+update tabelafinal set municipio = 2 where idcliente = 5;
+update tabelafinal set municipio = 3 where idcliente = 8;
+update tabelafinal set municipio = 4 where idcliente in (1, 10, 2);
+update tabelafinal set municipio = 5 where idcliente = 4;
+update tabelafinal set municipio = 6 where idcliente in (6, 12);
+update tabelafinal set municipio = 7 where idcliente = 13;
+update tabelafinal set municipio = 8 where idcliente in (11, 3);
+update tabelafinal set municipio = 9 where idcliente = 7;
+update tabelafinal set municipio = 10 where idcliente = 9;
+
+select * tabelafinal
+
+--criação de tabela de fornecedor
+CREATE TABLE fornecedor (
+	idfornecedor integer not null,
+	nomefornecedor varchar (50) not null,
+
+	constraint pk_fortab_idforn primary key (idfornecedor),
+	constraint unq_fortab_nomforn unique (nomefornecedor)
+)
+--inserção tabela do fornecedor
+Insert into fornecedor (idfornecedor, nomefornecedor)
+	values
+		(1, 'Cap.Computadores'),
+		(2, 'AA.Computadores'),
+		(3, 'BB.Maquinas');
+
+--criando tabela do vendedor
+CREATE TABLE vendedor (
+	idVendedor integer not null,
+	nomevendedor varchar (50) not null,
+
+	constraint pk_vendtab_idvend primary key (idVendedor),
+	constraint unq_vendtab_idvend unique (nomevendedor)
+)
+
+--inserção da tabela do vendedor
+
+INSERT INTO vendedor (idVendedor, nomevendedor)
+	VALUES
+		(1, 'André'),
+		(2, 'Alisson'),
+		(3, 'José'),
+		(4, 'Aliton'),
+		(5, 'Maria'),
+		(6, 'Suelem'),
+		(7, 'Aline'),
+		(8, 'Silvana');
+
+--criação tabela transportadora
+
+CREATE TABLE transportadora (
+	idTransportadora integer not null,
+	IDmunicipio integer not null,
+	nometransportadora varchar (50) not null,
+	Logradouro varchar (50),
+	Numero varchar (10),
+
+	constraint pk_transtap_idtrans primary key (idTransportadora),
+	constraint fk_transtap_idmunicipio foreign key (IDmunicipio) references municipio (idmunicipio),
+	constraint unq_transtap_nometrasnportadora unique (nometransportadora)
+)
+		
+--inserção da tabela da transportadora
+INSERT INTO transportadora (idTransportadora, IDmunicipio, nometransportadora, Logradouro, Numero)
+	VALUES
+		(1, 7, 'BS. Transportes', 'Rua das Limas', '01'),
+		(2, 6, 'União Transportes', null, null)
+
+		
+select idmunicipio, nomemunicipio from municipio
+
+--criação da tabela de produtos 
+
+CREATE TABLE produtos (
+	idproduto integer not null,
+	idFornecedor integer not null,
+	nomeprodutos varchar (50) not null, 
+	valor numeric (10, 2) not null,  
+
+	constraint pk_prodtab_idprod primary key (idproduto),
+	constraint fk_prodtab_idforn foreign key (idFornecedor) references fornecedor (idfornecedor)
+	
+)
+
+--inserção da tabela de produtos
+
+INSERT INTO produtos (idproduto, idFornecedor, nomeprodutos, valor)
+	VALUES
+		(1, 1, 'Microcomputador', 800),
+		(2, 1, 'Monitor', 500),
+		(3, 2, 'Placa Mãe', 200),
+		(4, 2, 'HD', 150),
+		(5, 2, 'Placa de vídeo', 200),
+		(6, 3, 'Memória RAM', 100),
+		(7, 1, 'Gabinete', 35);
+
+select * from produtos
 
 
 		
