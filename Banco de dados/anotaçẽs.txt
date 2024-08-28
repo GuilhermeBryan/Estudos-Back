@@ -76,4 +76,10 @@ in <- insere tudo
 
 ex: in (1, 2, 3, 4)
 
+No SQL, o tipo de dado FLOAT é utilizado para armazenar números de ponto flutuante, que são números com casas decimais. Diferente dos tipos inteiros, que armazenam apenas números inteiros (sem decimais), o FLOAT pode representar números muito grandes ou muito pequenos, com um determinado grau de precisão.
+
+Por exemplo, um valor como 123.456 seria armazenado em uma coluna do tipo FLOAT. Ele é especialmente útil quando você precisa de precisão em cálculos matemáticos, mas não necessariamente uma precisão exata como a oferecida pelo tipo DECIMAL.
+
+Aqui estão algumas características importantes do FLOAT:
+
 

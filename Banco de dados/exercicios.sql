@@ -451,5 +451,47 @@ INSERT INTO produtos (idproduto, idFornecedor, nomeprodutos, valor)
 
 select * from produtos
 
+--tabela de relações/pedidos
 
+CREATE TABLE pedido2 (
+	idPedido integer not null,
+	idCliente integer not null,
+	idTransportadora integer,
+	IdVendedor integer not null,
+	Data_Pedido date not null,
+	Valor float not null,
+
+	constraint pk_pedidodois_idped primary key (idPedido),
+	constraint fk_pedidodois_idclie foreign key (idCliente) references tabelafinal (idcliente),
+	constraint fk_pedidodois_idTrans foreign key (idTransportadora) references transportadora (idTransportadora),
+	constraint fk_pedidodois_idvend foreign key (IdVendedor) references vendedor (idVendedor)
+)
+
+alter table pedido2 drop Valor
+alter table pedido2 add Valor float
+
+INSERT INTO pedido2 (idPedido, Data_Pedido, Valor, idCliente, idTransportadora, IdVendedor)
+	VALUES
+		(1, '01/04/2008', 1300, 1, 1, 1 ),
+		(2, '01/04/2008', 500, 1, 1, 1),
+		(3, '02/04/2008', 300, 10, 2, 5),
+		(4, '05/05/2008', 1000, 8, 1, 7),
+		(5, '06/04/2008', 200, 9, 2, 6),
+		(6, '06/04/2008', 1985, 7, 1, 6),
+		(7, '06/04/2008', 800, 3, 1, 7),
+		(8, '06/04/2008', 175, 3, null, 7),
+		(9, '07/04/2008', 1300, 11, null, 8),
+		(10, '10/04/2008', 200, 6, 1, 8),
+		(11, '15/04/2008', 300, 4, 2, 1),
+		(12, '20/04/2008', 500, 4, 2, 5),
+		(13, '20/04/2008', 350, 9, 1, 7),
+		(14, '23/04/2008', 300, 2, 1, 5),
+		(15, '25/04/2008', 200, 10, null, 5);
+
+select * from pedido2
+select idcliente, nome from tabelafinal
+select * from pedido
+select * from transportadora
+select * from produtos
+select * from vendedor 
 		
