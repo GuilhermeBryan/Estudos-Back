@@ -1,0 +1,8 @@
+Primary key <- é uma chave que não podera ser repetida, uma chave unica
+forma de utilizar: "constraint pk_tabela_variavel primary key (variavel)
+
+foreign key <- serve para fazer relação de dados de uma tabela com a outra, por exemplo o id, eu tenho o "idcliente" em duas tabelas, entao farei a relação delas
+EX: "constraint fk_tabela_id (idcliente) references tabela (idcliente)"
+
+unique <- caso você queira fazer um dado nao se repetir, mas nao sendo chave primaria
+EX: constraint unq_tabela_cpf unique (cpf)

@@ -14,19 +14,30 @@ POSTGRESQL:que pode ser considerado um sistema gerenciador de banco de dados.
 SGBD (isola os usuarios dos detalhes do nivel de hardware, ou seja, nós vamos fazer a interação do banco de dados por meio do SGBD, utilizando a linguagem SQL:que fara o tratamento de requisições inclusões, alteração, consultas e exclusão. 
 
 
-tipos de variaveis: integers <- inteiro
-varchar e char <- caractere
+tipos de variaveis: integers <- numero inteiro
+
+varchar e char <- caractere, o varchar armazenara no disco tudo digitado, e o char armazena no disco mas caso não esteja completo ele completa com espaços.
+
 text <- texto livre
-constraint (restrição) 
+
+constraint (restrição)
+
+numeric <- o numeric você tera dois numeros e utilizara a variavel da seguinte forma  EX: "numeric(10, 5)", o primeiro numero tera dez casas e apos a virgula, o segundo tera cinco casas. 
+ 
 pk_ <- primary key (chave primaria, o campo unico que não pode ser repetido)
+
 EXEMPLO: constraint pk_(algum nome)_(nome da variavel) primary key (nome da variavel que não sera repetida) e se tornara chave primaria
+
 unique <- funciona igual a chave primaria, mas ela não é chave primaria, mas ira restringir o campo que tera esse comando utilizado
+
 EX:constraint unk_prof unique (prof)
+
 Drop Table (nome da tabela) ira excluir sua tabela
 
 not null <- exige que o campo seja preenchido caso contrario dara erro
 
 varchar ira armazenar o numero de letras que você colocar
+
 char ira preencher com espaço caso você não coloque todas as letras
 
 caso você ja tenha executado e ter inserido outra parte ao codigo dara erro, por isso selecione a outra parte inserida e aí sim rode.
@@ -34,5 +45,35 @@ caso você ja tenha executado e ter inserido outra parte ao codigo dara erro, po
 caso de erro nas suas "atualizaões da tabela" você tera que renomear o que ser pedido
 
 SHIFT + ALT + SETA PRA BAIXO = clona a ultima linha
+
+Alter table <- muda a estrutura da tabela
+
+Rename <- renomeia 
+
+column <- seleciona a coluna
+
+to <- para
+
+type <- tipo
+
+drop <- apagar um campo
+
+lembre do where
+
+Utilize estes comandos juntos
+
+ex:alter table cliente rename column profissao to idprofissao
+
+obs:alem de column pode ser usado junto
+
+add <-adiciona um novo campo a tabela
+
+ex: alter table cliente add numero
+
+chave dourada é primaria e chave prata estrangeira
+
+in <- insere tudo
+
+ex: in (1, 2, 3, 4)
 
 
