@@ -35,6 +35,17 @@ obs: também funciona asc que significa ordem ascendente, onde ira filtrar de fo
 
 obs:você pode utilizar or e and, and é quando é obrigatório de ter outra coisa e o or é quando há chance.
 
+o filtro "max" traz o maior numero
+
+o filtro "count" conta os dados
+
+o filtro "min" o menor numero
+
+o filtro "avg" ira pegar a metade do numero
+
+é possivel fazer calculos no select EX:
+
+SELECT nomeprodutos, valor, (valor * 10) / 100 FROM produtos order by nomeprodutos 
 
 
 

@@ -80,6 +80,36 @@ No SQL, o tipo de dado FLOAT é utilizado para armazenar números de ponto flutu
 
 Por exemplo, um valor como 123.456 seria armazenado em uma coluna do tipo FLOAT. Ele é especialmente útil quando você precisa de precisão em cálculos matemáticos, mas não necessariamente uma precisão exata como a oferecida pelo tipo DECIMAL.
 
-Aqui estão algumas características importantes do FLOAT:
+Aqui estão algumas características importantes do FLOAT:o float aceita um limite pequeno de numeros para colocar numero com , e ele ocupa 10 espaços na memória aproximadamente, o DOUBLE dobra este valor.
+
+
+complementos:
+
+Os tipos de dados DOUBLE, NUMERIC e FLOAT em SQL são usados para armazenar números, mas têm diferenças importantes em termos de precisão, armazenamento e uso. Vou explicar as diferenças e restrições de cada um:
+1. DOUBLE
+
+    Descrição: DOUBLE (ou DOUBLE PRECISION) é um tipo de dado que representa números de ponto flutuante com precisão dupla. Ele usa 64 bits para armazenar o valor.
+    Precisão: A precisão de um DOUBLE depende da implementação do banco de dados, mas geralmente oferece uma precisão de cerca de 15 a 17 dígitos decimais.
+    Uso: É utilizado quando é necessário trabalhar com números muito grandes ou muito pequenos que requerem uma alta precisão, como em cálculos científicos.
+    Restrições: Devido à natureza dos números de ponto flutuante, o DOUBLE pode sofrer de problemas de arredondamento, o que pode resultar em pequenas imprecisões. Não deve ser usado quando é necessária uma precisão exata, como em valores monetários.
+
+2. NUMERIC
+
+    Descrição: NUMERIC (ou DECIMAL) é um tipo de dado que representa números exatos. Ele permite especificar a quantidade de dígitos totais e a quantidade de dígitos após o ponto decimal.
+    Precisão: A precisão é definida pelo usuário ao declarar o tipo. Por exemplo, NUMERIC(10, 2) armazena um número com até 10 dígitos, sendo 2 deles após o ponto decimal.
+    Uso: É usado quando a precisão exata é necessária, como em cálculos financeiros onde números devem ser exatos.
+    Restrições: O NUMERIC pode ocupar mais espaço em disco comparado ao FLOAT ou DOUBLE, especialmente se for especificada uma precisão muito alta. Além disso, as operações com NUMERIC podem ser mais lentas devido à necessidade de manter a precisão exata.
+
+3. FLOAT
+
+    Descrição: FLOAT é outro tipo de dado que representa números de ponto flutuante, mas com precisão simples. Ele usa 32 bits para armazenar o valor.
+    Precisão: A precisão de um FLOAT é menor do que a de um DOUBLE, geralmente em torno de 7 dígitos decimais.
+    Uso: É utilizado quando a memória é uma preocupação e uma precisão mais baixa é aceitável. É útil em aplicações onde uma precisão exata não é tão crítica.
+    Restrições: Assim como o DOUBLE, o FLOAT pode ter problemas de arredondamento e imprecisões. Não é adequado para armazenar valores que requerem precisão exata.
+
+Resumo das Restrições:
+
+    DOUBLE e FLOAT: Não são recomendados para cálculos financeiros ou outros usos onde a precisão exata é crucial devido a possíveis imprecisões de arredondamento.
+    NUMERIC: Garante precisão exata, mas pode ser mais lento e consumir mais espaço em comparação com FLOAT e DOUBLE.
 
 

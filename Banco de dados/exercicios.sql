@@ -430,7 +430,7 @@ CREATE TABLE produtos (
 	idproduto integer not null,
 	idFornecedor integer not null,
 	nomeprodutos varchar (50) not null, 
-	valor numeric (10, 2) not null,  
+	valor numeric (10, 2) not null, 
 
 	constraint pk_prodtab_idprod primary key (idproduto),
 	constraint fk_prodtab_idforn foreign key (idFornecedor) references fornecedor (idfornecedor)
@@ -459,7 +459,7 @@ CREATE TABLE pedido2 (
 	idTransportadora integer,
 	IdVendedor integer not null,
 	Data_Pedido date not null,
-	Valor float not null,
+	Valor float not null, 
 
 	constraint pk_pedidodois_idped primary key (idPedido),
 	constraint fk_pedidodois_idclie foreign key (idCliente) references tabelafinal (idcliente),
@@ -467,8 +467,7 @@ CREATE TABLE pedido2 (
 	constraint fk_pedidodois_idvend foreign key (IdVendedor) references vendedor (idVendedor)
 )
 
-alter table pedido2 drop Valor
-alter table pedido2 add Valor float
+
 
 INSERT INTO pedido2 (idPedido, Data_Pedido, Valor, idCliente, idTransportadora, IdVendedor)
 	VALUES
@@ -488,10 +487,138 @@ INSERT INTO pedido2 (idPedido, Data_Pedido, Valor, idCliente, idTransportadora, 
 		(14, '23/04/2008', 300, 2, 1, 5),
 		(15, '25/04/2008', 200, 10, null, 5);
 
+
+
 select * from pedido2
 select idcliente, nome from tabelafinal
-select * from pedido
 select * from transportadora
 select * from produtos
 select * from vendedor 
+
+
+CREATE TABLE Pedido_produto (
+	idpedido integer not null,
+	idProduto integer not null,
+	Quantidade integer not null,
+	valor_unitario numeric (10, 2),
+
+	CONSTRAINT fk_pedidoprodtab_idped foreign key (idpedido) references pedido2 (idPedido),
+	CONSTRAINT fk_pedidoprodtab_idProduto foreign key (idProduto) references produtos (idproduto)
+	
+)
+
+INSERT INTO Pedido_produto (idPedido, idProduto, Quantidade, valor_unitario)
+	VALUES
+		(1, 1, 1, 800),
+		(1, 2, 1, 500),
+		(2, 2, 1, 500),
+		(3, 4, 2, 150),
+		(4, 1, 1, 800),
+		(4, 3, 1, 200),
+		(5, 3, 1, 200),
+		(6, 1, 2, 800),
+		(6, 7, 1, 35),
+		(6, 5, 1, 200),
+		(6, 4, 1, 150),
+		(7, 1, 1, 800),
+		(8, 7, 5, 35),
+		(9, 1, 1, 800),
+		(9, 2, 1, 500),
+		(10, 5, 1, 200),
+		(11, 5, 1, 200),
+		(11, 6, 1, 500),
+		(12, 2, 1, 500),
+		(13, 3, 1, 200),
+		(13, 4, 1, 150),
+		(14, 6, 3, 100),
+		(15, 3, 1, 200);
+
+
+SELECT * FROM Pedido_produto
+SELECT * FROM vendedor
+SELECT * FROM produtos
+SELECT * FROM municipio
+SELECT * FROM uf
+SELECT * FROM pedido2
+SELECT * FROM vendedor
+SELECT * FROM tabelafinal
+SELECT * FROM transportadora
+SELECT * FROM logradouro
+
+--consultas
+
+--nome de todos vendedores em ordem alfabetica
+SELECT nomevendedor FROM vendedor order by nomevendedor asc
+
+--Os produtos que o preço seja maior que R$200,00, em ordem crescente pelo preço.
+SELECT valor FROM produtos WHERE valor > 200.00 ORDER BY valor desc
+
+--O nome do produto, o preço e o preço reajustado em 10%, ordenado pelo nome do produto.
+SELECT nomeprodutos, valor, valor + (valor * 10) / 100 FROM produtos order by nomeprodutos 
+
+--Os municípios do Rio Grande do Sul.
+SELECT * FROM municipio WHERE iduf = 6
+
+--Os pedidos feitos entre 10/04/2008 e 25/04/2008 ordenado pelo valor.
+
+SELECT idPedido FROM pedido2 WHERE data_pedido between '10/04/2008' and '25/04/2008'
+
+--Os pedidos que o valor esteja entre R$1.000,00 e R$1.500,00.
+
+SELECT idPedido, valor FROM pedido2 WHERE valor BETWEEN 1000 and 1500
+
+--Os pedidos que o valor não esteja entre R$100,00 e R$500,00.
+
+SELECT idPedido, valor FROM pedido2 WHERE valor NOT BETWEEN 100 and 500
+
+--Os pedidos do vendedor André ordenado pelo valor em ordem decrescente.
+
+SELECT * FROM pedido2 WHERE idvendedor = 1 order by valor desc
+
+--Os pedidos do cliente Manoel ordenado pelo valor em ordem crescente.
+
+SELECT * FROM pedido2 WHERE idcliente = 1 order by valor asc
+
+--Os pedidos do cliente Manoel que foram feitos pelo vendedor André.
+SELECT * FROM pedido2 WHERE idcliente = 1 and idvendedor = 1 
+
+--Os pedidos que foram transportados pela transportadora União Transportes.
+SELECT * FROM pedido2 WHERE idtransportadora = 2
+
+--Os pedidos feitos pela vendedora Maria ou pela vendedora Aline.
+SELECT * FROM pedido2 WHERE idvendedor = 5
+
+--Os clientes que moram em União da Vitória ou Porto União.
+SELECT * FROM municipio
+SELECT * FROM tabelafinal
+SELECT idcliente, nomemunicipio FROM tabelafinal, municipio WHERE idmunicipio = 4
+
+--Os clientes que não moram em União da Vitória e nem em Porto União.
+SELECT * FROM municipio
+--4 e 7
+SELECT 	idcliente, nomemunicipio FROM tabelafinal, municipio WHERE NOT idmunicipio = 4 and not idmunicipio = 7
+--15. Os clientes que não informaram o logradouro.
+SELECT idcliente, nome FROM tabelafinal WHERE logradouro is null
+--16. Os vendedores que o nome começa com a letra S.
+SELECT nomevendedor, idvendedor FROM vendedor WHERE nomevendedor like 'S%'
+--Os vendedores que o nome termina com a letra A.
+Select nomevendedor, idvendedor FROM vendedor WHERE nomevendedor like '%s'
+--Os vendedores que o nome não começa com a letra A.
+SELECT nomevendedor, idvendedor FROM vendedor WHERE nomevendedor not like 'A%'
+--Os municípios que começam com a letra P e são de Santa Catarina.
+SELECT * FROM municipio
+SELECT * FROM uf
+SELECT nomemunicipio, nomeuf FROM municipio, UF WHERE municipio.iduf = 1 and nomemunicipio LIKE 'P%' 
+--As transportadoras que informaram o endereço.
+SELECT * FROM transportadora
+SELECT idtransportadora FROM transportadora, tabelafinal WHERE tabelafinal.bairro is not null
+--Os itens do pedido 01.
+SELECT * FROM pedido2
+SELECT * FROM produtos
+SELECT idproduto FROM produtos, pedido2 WHERE pedido2.idpedido = 1
+--Os itens do pedido 06 ou do pedido 10.
+SELECT idproduto FROM produtos, pedido2 WHERE pedido2.idpedido = 6 or pedido2.idpedido = 10
+
+
+
 		
