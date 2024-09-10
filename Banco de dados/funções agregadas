@@ -1,0 +1,17 @@
+o filtro "max" traz o maior numero
+
+o filtro "count" conta os dados
+
+o filtro "min" o menor numero
+
+o filtro "avg" ira pegar a metade do numero
+
+o filtro "sum" fara o somatorio dos dados
+
+GROUP BY usado apos o from e a tabela informada, serve para agrupar dados, e uma das colunas precisa ter uma agregação EX:
+
+SELECT nome, sum(valor) FROM cliente group by nome
+
+para filtrar por exemplo, um somatorio maior de 500, devemos usar o comando HAVING, mostrando melhor:
+
+SELECT nome, sum(valor) FROM cliente group by nome HAVING sum(valor) > 500

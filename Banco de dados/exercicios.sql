@@ -619,6 +619,109 @@ SELECT idproduto FROM produtos, pedido2 WHERE pedido2.idpedido = 1
 --Os itens do pedido 06 ou do pedido 10.
 SELECT idproduto FROM produtos, pedido2 WHERE pedido2.idpedido = 6 or pedido2.idpedido = 10
 
+--funções agregadas
+--1. A média dos valores de vendas dos vendedores que venderam mais que R$ 200,00
+SELECT * FROM vendedor
+SELECT * FROM pedido2
+SELECT idvendedor, avg(valor) FROM pedido2 group by idvendedor having avg(valor) > 200.00
+--2. Os vendedores que venderam mais que R$ 1500,00.
+SELECT idvendedor, sum(valor) FROM pedido2 group by idvendedor having sum(valor) > 1500
+--3. O somatório das vendas de cada vendedor.
+SELECT idvendedor, sum(valor) FROM pedido2 group by idvendedor
+--4.quantidade de municipios
+SELECT COUNT(idmunicipio) FROM municipio 
+SELECT * FROM municipio
+--5.quantidade de municipios que são do parana ou de santa catarina
+SELECT COUNT(idmunicipio) FROM municipio WHERE iduf = 1 OR iduf = 2
+SELECT * FROM uf
+--6.quantidade de municipios por estado
+SELECT count(idmunicipio) FROM municipio GROUP BY iduf
+SELECT * FROM uf
+--7.a quantidade de clientes que informaram o logradouro
+SELECT * FROM tabelafinal
+SELECT COUNT(idcliente) FROM tabelafinal WHERE logradouro is not null
+--8.a quantidade de clientes por municipio
+SELECT idmunicipio, COUNT(idcliente) FROM tabelafinal, municipio GROUP BY idmunicipio
+SELECT * FROM municipio
+--9.a quantidade de fornecedores
+SELECT * FROM fornecedor
+SELECT COUNT(idfornecedor) FROM fornecedor
+--10.a quantidade de produtos por fornecedor
+SELECT COUNT(idproduto) FROM produtos GROUP BY idfornecedor
+--11.a media de preços dos produtos do fornecedor Cap.Computadores
+SELECT avg(valor) FROM produtos WHERE idfornecedor = 1
+SELECT * FROM fornecedor
+--12.o somatorio dos preços de todos os produtos
+SELECT sum(valor) FROM produtos
+--13.o nome do produto e o preço somente pelo produto mais caro
+SELECT nomeprodutos, max(valor) FROM produtos GROUP BY nomeprodutos
+SELECT * FROM produtos
+--14.o nome do produto e o preço somente pelo produto mais barato
+SELECT nomeprodutos, min(valor) FROM produtos GROUP BY nomeprodutos
+--15.a media de preço de todos os produtos
+SELECT avg(valor) FROM produtos
+--16.a quantidade de transportadoras
+SELECT * FROM transportadora
+SELECT COUNT(idtransportadora) FROM transportadora
+--17.a media de valor de todos os produtos
+SELECT avg(valor) FROM produtos
+SELECT * FROM produtos
+--18.o somatorio do valor do pedido agrupado por clientes
+SELECT * FROM pedido_produto 
+SELECT sum(valor) FROM pedido2 GROUP BY idcliente
+SELECT * FROM pedido2
+--19.o somatorio do valor do pedido agrupado por vendedor
+SELECT sum(valor) FROM pedido2 GROUP BY idvendedor
+--20.o somatorio do valor do pedido agrupado por transportadora
+SELECT sum(valor) FROM pedido2 GROUP BY idtransportadora
+--21.o somatorio do valor do pedido agrupado pela data
+SELECT sum(valor) FROM pedido2 GROUP BY data_pedido
+SELECT * FROM pedido2
+--22.o somatorio do valor do pedido agrupado por cliente, vendedor e transportadora
+SELECT SUM(valor) FROM pedido2 GROUP BY idcliente, idvendedor, idtransportadora
+--23.o somatorio do valor do pedido que esteja entre 01/04/2008 e 10/12/2009 e que seja maior que 200,00
+SELECT sum(valor) FROM pedido2 WHERE data_pedido BETWEEN '01/04/2008' and '10/12/2009' and valor > 200.00
+--24.a media do valor do pedido do vendedor andre
+SELECT avg(valor) FROM pedido2 WHERE idvendedor = 1
+SELECT * FROM vendedor
+--25.a media do valor do pedido da Amanda
+SELECT avg(valor) FROM pedido2 WHERE idcliente = 5
+SELECT * FROM tabelafinal
+--26.a quantidade de pedidos transportados pela transportadora BS.Transportes
+SELECT * FROM pedido2
+SELECT * FROM pedido_produto
+SELECT count(idpedido) FROM pedido2 WHERE idtransportadora = 2
+--27.a quantidade de pedidos agrupada por vendedores
+SELECT COUNT(idpedido) FROM pedido2 GROUP BY idvendedor
+--28.a quantidade de pedidos agrupada por clientes
+SELECT COUNT(idpedido) FROM pedido2 GROUP BY idcliente
+--29.a quantidade de pedidos entre 15/04/2008 e 25/04/2008
+SELECT COUNT(idpedido) FROM pedido2 WHERE data_pedido BETWEEN '15/04/2008' and '25/04/2008'~
+--30.a quantidade de pedidos que seja maior que 10000
+SELECT COUNT(idpedido) FROM pedido2 WHERE valor > 1000
+--31.a quantidade de microcomputadores vendida
+SELECT * FROM produtos
+SELECT COUNT(idproduto) FROM produtos WHERE idproduto = 1
+--32.a quantidade de produtos vendida agrupado por produto
+SELECT COUNT(idproduto) FROM produtos GROUP BY idproduto
+--33.O somatório do valor dos produtos dos pedidos, agrupado por pedido
+SELECT COUNT(valor) FROM pedido2 GROUP BY idpedido
+SELECT * FROM pedido2
+--34.A quantidade de produtos agrupado por pedido 
+SELECT COUNT(idproduto) FROM pedido_produto GROUP BY idpedido
+SELECT * FROM pedido2
+SELECT * FROM produtos
+--35.o somatorio do valor total de todos os produtos do pedido
+SELECT SUM(valor) FROM pedido2 GROUP BY idpedido
+--36.a media dos produtos do pedido 6
+SELECT avg(valor) FROM pedido2 WHERE idpedido = 6
+--37.o valor do maior produto do pedido
+SELECT max(valor) FROM pedido2 
+--38.o valor do menor produto do pedido
+SELECT min(valor) FROM pedido2
+--39.o somatorio da quantidade de produtos por pedido 
+SELECT SUM(idproduto) FROM pedido_produto GROUP BY idpedido
+--40.O somatorio da quantidade de todos os produtos do pedido
+SELECT SUM(idproduto) FROM pedido_produto
 
 
-		
