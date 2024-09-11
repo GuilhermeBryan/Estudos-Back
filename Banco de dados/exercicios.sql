@@ -724,4 +724,80 @@ SELECT SUM(idproduto) FROM pedido_produto GROUP BY idpedido
 --40.O somatorio da quantidade de todos os produtos do pedido
 SELECT SUM(idproduto) FROM pedido_produto
 
+--relacionamentos com join 
+SELECT * FROM tabelafinal
+SELECT * FROM municipio
+SELECT * FROM uf
+SELECT * FROM profissoes
+SELECT * FROM nacionalidades
 
+SELECT t.nome, u.nomeuf FROM tabelafinal as t INNER JOIN uf as u ON t.uf = u.sigla WHERE t.nome ilike 'a%' or t.nome ilike 'â%'
+
+--1. O nome do cliente, a profissão, a nacionalidade, o logradouro, o número, o complemento, o bairro, o município e a unidade de federação.
+SELECT * FROM tabelafinal
+SELECT * FROM profissoes
+SELECT * FROM nacionalidades
+SELECT * FROM municipio
+
+
+SELECT 
+	tf.nome,
+	pf.nomedaprofissao,
+	nac.nomenacional,
+	tf.logradouro,
+	tf.numero,
+	tf.complemento,
+	tf.bairro,
+	mun.nomemunicipio
+	
+	
+FROM tabelafinal tf 
+	INNER JOIN profissoes as pf ON tf.profissao = pf.idprofissao
+	INNER JOIN nacionalidades as nac ON tf.nacionalidade = nac.idnacionalidade
+	INNER JOIN municipio as mun ON tf.municipio = mun.idmunicipio
+
+--2. O nome do produto, o valor e o nome do fornecedor.
+SELECT * FROM produtos
+SELECT * FROM fornecedor
+SELECT * FROM pedido_produto
+
+
+SELECT
+	pr.nomeprodutos,
+	pr.valor,
+	nomefornecedor
+FROM produtos as pr
+	INNER JOIN pedido_produto AS pp ON pr.idproduto = pp.idproduto 
+	INNER JOIN fornecedor AS forn ON pr.idproduto = forn.idfornecedor
+
+--3.O nome da transportadora e o município.
+	SELECT * FROM transportadora
+	SELECT * FROM municipio
+
+SELECT 
+	nometransportadora,
+	nomemunicipio
+FROM transportadora as tp
+	INNER JOIN municipio as mn ON mn.idmunicipio = tp.idmunicipio
+
+--4. A data do pedido, o valor, o nome do cliente, o nome da transportadora e o nome do vendedor.
+	SELECT * FROM pedido2
+	SELECT * FROM pedido_produto
+	SELECT * FROM tabelafinal
+	SELECT * FROM transportadora
+	SELECT * FROM vendedor
+
+SELECT 
+	ped.data_pedido,
+	ped.valor,
+	tf.nome,
+	trans.nometransportadora,
+	ven.nomevendedor
+
+FROM pedido2 as ped
+	INNER JOIN tabelafinal AS tf ON ped.idcliente = tf.idcliente
+	INNER JOIN transportadora AS trans ON ped.idtransportadora = trans.idtransportadora
+	INNER JOIN vendedor AS ven ON ped.idvendedor = ven.idvendedor
+
+--5. O nome do produto, a quantidade e o valor unitário dos produtos do pedido.
+	

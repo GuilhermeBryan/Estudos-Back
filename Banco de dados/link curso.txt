@@ -1,3 +1,3 @@
-obs:estou na aula 38
+obs:estou na aula 40
 
 https://www.udemy.com/course/banco-de-dados-sql-postgresql/learn/lecture/36137710#content

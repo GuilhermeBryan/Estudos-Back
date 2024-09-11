@@ -48,6 +48,9 @@ SHIFT + ALT + SETA PRA BAIXO = clona a ultima linha
 
 Alter table <- muda a estrutura da tabela
 
+para renomear uma tabela basta fazer:ALTER TABLE nome_antigo RENAME TO novo_nome;
+
+
 Rename <- renomeia 
 
 column <- seleciona a coluna

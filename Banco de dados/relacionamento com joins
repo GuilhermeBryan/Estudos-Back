@@ -1,0 +1,19 @@
+o Join basicamente servira para puxar dados iguais de duas tabelas.
+
+EX: SELECT t.nome, u.nomeuf FROM cliente as c INNER JOIN uf as u ON c.uf = u.sigla <- aqui ele estara pegando o nome das pessoas e o nome de suas unioes federativas, e o AS esta servindo para abreviar as tabelas como "c" e "u", mesmo nao sendo necessario o AS.
+
+o sinalzinho tambem pode servir como filtros de igual, maior (nesse caso para numeros) e menor.
+
+FROM <-tabela da esquerda
+JOIN <- tabela da direita
+
+ON servira para filtrar sua pesquisa, caso nao seja utilizado ele apenas pegara tudo das tabelas ou dara erro
+
+LEFT JOIN <- diferente do inner, ele pegara as informações da tabela da esquerda e dados iguais da tabela da direita
+RIGHT JOIN <-diferente do inner, ele pegara as informações da tabela da direita e dados iguais da tabela da esquerda
+FULL <- pegara todas informações de ambas tabelas. 
+
+você tambem pode fazer filtros com where e etc.
+EX:SELECT t.nome, u.nomeuf FROM tabelafinal as t INNER JOIN uf as u ON t.uf = u.sigla WHERE t.nome ilike 'a%' 
+aqui ele esta pegando o nome das unioes que começam com a letra A
+

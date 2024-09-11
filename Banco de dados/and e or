@@ -1,0 +1,1 @@
+AND (E) retorna verdadeiro se as duas entradas forem verdadeiras, OR(OU) retorna verdadeiro se pelo menos uma das entradas for verdadeira (uma OU outra)
