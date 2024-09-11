@@ -800,4 +800,41 @@ FROM pedido2 as ped
 	INNER JOIN vendedor AS ven ON ped.idvendedor = ven.idvendedor
 
 --5. O nome do produto, a quantidade e o valor unitário dos produtos do pedido.
+SELECT * FROM produtos
+SELECT * FROM pedido2
+SELECT * FROM pedido_produto
+
+SELECT 
+	prod.nomeprodutos,
+	pp.quantidade,
+	pp.valor_unitario
+FROM pedido_produto AS pp 
+	INNER JOIN produtos AS prod ON prod.idproduto = pp.idproduto
+
+--6. O nome dos clientes e a data do pedido dos clientes que fizeram algum pedido (ordenado pelo nome do cliente).
+SELECT * FROM tabelafinal
+SELECT * FROM pedido2
+
+SELECT 
+	tf.nome,
+	ped.data_pedido
+FROM tabelafinal AS tf
+	INNER JOIN pedido2 AS ped ON tf.idcliente = ped.idcliente ORDER BY tf.nome ASC WHERE 	
+
+--7. O nome dos clientes e a data do pedido de todos os clientes, independente se tenham feito pedido (ordenado pelo nome do cliente).
+SELECT 
+	tf.nome,
+	ped.data_pedido
+FROM tabelafinal AS tf
+	FULL JOIN pedido2 AS ped ON tf.idcliente = ped.idcliente ORDER BY tf.nome ASC 
+--8.O nome da cidade e a quantidade de clientes que moram naquela cidade.
+	SELECT * FROM tabelafinal
+	SELECT * FROM municipio
+	SELECT * FROM pedido_produto
+
+SELECT 
+	mun.nomemunicipio,
+	pp.quantidade
+FROM municipio AS mun 
+	INNER JOIN pedido_produto AS pp ON 
 	
