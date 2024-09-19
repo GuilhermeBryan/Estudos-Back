@@ -819,7 +819,7 @@ SELECT
 	tf.nome,
 	ped.data_pedido
 FROM tabelafinal AS tf
-	INNER JOIN pedido2 AS ped ON tf.idcliente = ped.idcliente ORDER BY tf.nome ASC WHERE 	
+	INNER JOIN pedido2 AS ped ON tf.idcliente = ped.idcliente ORDER BY tf.nome ASC 
 
 --7. O nome dos clientes e a data do pedido de todos os clientes, independente se tenham feito pedido (ordenado pelo nome do cliente).
 SELECT 
@@ -834,7 +834,104 @@ FROM tabelafinal AS tf
 
 SELECT 
 	mun.nomemunicipio,
-	pp.quantidade
+	COUNT(tf.idcliente)
 FROM municipio AS mun 
-	INNER JOIN pedido_produto AS pp ON 
-	
+	FULL JOIN tabelafinal AS tf ON tf.municipio = mun.idmunicipio  
+GROUP BY idmunicipio
+
+--9.O nome do fornecedor e a quantidade de produtos de cada fornecedor.
+
+SELECT * FROM fornecedor
+SELECT * FROM produtos
+
+
+SELECT 
+	forn.nomefornecedor,
+	COUNT(prod.nomeprodutos)
+FROM fornecedor AS forn
+FULL JOIN produtos as prod ON forn.idfornecedor = prod.idfornecedor
+GROUP BY nomefornecedor
+
+--10.O nome do cliente e o somatório do valor do pedido (agrupado por cliente).
+
+SELECT * FROM tabelafinal 
+SELECT * FROM pedido2
+
+SELECT 
+	tf.nome,
+	SUM(ped2.valor) AS "soma dos valores agrupada por clientes"
+FROM tabelafinal AS tf
+	INNER JOIN pedido2 AS ped2 ON tf.idcliente = ped2.idcliente
+GROUP BY nome
+
+--11.O nome do vendedor e o somatório do valor do pedido (agrupado por vendedor).
+
+SELECT * FROM vendedor
+SELECT * FROM pedido2
+
+SELECT 
+	vend.nomevendedor,
+	SUM(ped2.valor) AS "somatorio do valor de pedidos por vendedor"
+FROM vendedor AS vend
+	INNER JOIN pedido2 AS ped2 ON vend.idvendedor = ped2.idvendedor
+GROUP BY nomevendedor
+
+--12.O nome da transportadora e o somatório do valor do pedido (agrupado por transportadora).
+
+SELECT * FROM transportadora
+SELECT * FROM pedido2
+
+SELECT 
+	trans.nometransportadora,
+	SUM(valor)
+FROM transportadora AS trans 
+INNER JOIN pedido2 AS ped2 ON trans.idtransportadora = ped2.idtransportadora
+GROUP BY nometransportadora
+
+--13.O nome do cliente e a quantidade de pedidos de cada um (agrupado por cliente).
+
+SELECT 
+	tf.nome,
+	COUNT(ped2.idpedido) AS "quantidade pedido"
+FROM tabelafinal tf
+INNER JOIN pedido2 AS ped2 ON tf.idcliente = ped2.idcliente
+GROUP BY nome
+
+--14.O nome do produto e a quantidade vendida (agrupado por produto).
+SELECT * FROM produtos
+SELECT * FROM pedido_produto
+
+SELECT 
+	pd.nomeprodutos,
+	COUNT(pp.quantidade)
+FROM produtos AS pd
+INNER JOIN pedido_produto pp ON pd.idproduto = pp.idproduto
+GROUP BY nomeprodutos
+
+--15.A data do pedido e o somatório do valor dos produtos do pedido (agrupado pela data do pedido).
+SELECT * FROM produtos
+SELECT * FROM pedido2 
+SELECT * FROM pedido_produto
+
+
+SELECT
+	ped2.data_pedido,
+	SUM(prod.valor_unitario)
+FROM pedido2 AS ped2
+INNER JOIN pedido_produto AS prod ON ped2.idpedido = prod.idpedido
+GROUP BY data_pedido
+
+--16.A data do pedido e a quantidade de produtos do pedido (agrupado pela data do pedido).
+
+SELECT * FROM pedido2
+SELECT * FROM pedido_produto
+
+SELECT 
+	ped2.data_pedido,
+	SUM(pp.quantidade) AS "quantidade"
+FROM pedido2 ped2
+INNER JOIN pedido_produto AS pp ON ped2.idpedido = pp.idpedido
+GROUP BY data_pedido	
+
+
+--comandos adicionais

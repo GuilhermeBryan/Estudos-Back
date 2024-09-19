@@ -20,6 +20,8 @@ varchar e char <- caractere, o varchar armazenara no disco tudo digitado, e o ch
 
 text <- texto livre
 
+AS <- para nomear algo e caso for nomear uma coluna sempre utilizar aspas duplas.
+
 constraint (restrição)
 
 numeric <- o numeric você tera dois numeros e utilizara a variavel da seguinte forma  EX: "numeric(10, 5)", o primeiro numero tera dez casas e apos a virgula, o segundo tera cinco casas. 

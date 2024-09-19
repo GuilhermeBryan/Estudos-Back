@@ -1,0 +1,41 @@
+EXTRACT <- serve para extrair informações, exemplo, eu tenho datas de 1 a 20 de datas no formato DATE de variavel, caso queira pegar apenas os dias farei
+
+SELECT
+	data_pedido,
+	EXTRACT (DAY FROM data_pedido)
+	
+SUBSTRING <- posso utilizar para retornar apenas alguns caracteres, por exemplo eu tenho uma lista com diversos nomes como Guilherme, utilizando este comando posso fazer ele pegar apenas 3 caracteres para ficar Gui ou qualquer numero.Como utilizar:
+
+SELECT nome, SUBSTRING(nome FROM 1 FOR 3) FROM cliente
+
+SELECT nome, SUBSTRING(nome, 2) FROM cliente <- aqui ele esta tirando dois caracteres iniciais, exemplo de Guilherme ficara ilherme, ele tirara o G e U
+
+
+UPPER <- utilizado para fazer consultas todas em CAPS LOCK, ex:
+
+SELECT UPPER(nome) FROM clientes
+
+todos os dados da coluna nomes retornaram em maiusculo
+
+COALESE <- cria uma mensagem personalizada em campos NULLS, EX
+
+SELECT nome, COALESE(cpf, 'Não informado') FROM clientes
+
+todos os dados do campo CPF que estiverem nulos, ira aparecer esta mensagem.
+
+CASE <- cria condições que apenas seram retornadas caso a consulta atenda a estas condições, EX:
+
+SELECT
+	CASE sigla
+	WHEN 'RJ' THEN 'Rio de Janeiro'
+	WHEN 'SP' THEN	'São Paulo'
+	ELSE 'Outros'
+	END AS uf
+FROM uf
+
+CASE = caso
+WHEN = quando
+THEN = então
+ELSE = outro ou quando nenhum dos casos for aceitos
+END = encerrar o case
+
