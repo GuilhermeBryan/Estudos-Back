@@ -1,4 +1,4 @@
-EXTRACT <- serve para extrair informações, exemplo, eu tenho datas de 1 a 20 de datas no formato DATE de variavel, caso queira pegar apenas os dias farei
+EXTRACT (apenas funciona com tipo data) <- serve para extrair informações, exemplo, eu tenho datas de 1 a 20 de datas no formato DATE de variavel, caso queira pegar apenas os dias farei
 
 SELECT
 	data_pedido,
@@ -17,7 +17,7 @@ SELECT UPPER(nome) FROM clientes
 
 todos os dados da coluna nomes retornaram em maiusculo
 
-COALESE <- cria uma mensagem personalizada em campos NULLS, EX
+COALESCE <- cria uma mensagem personalizada em campos NULLS, EX
 
 SELECT nome, COALESE(cpf, 'Não informado') FROM clientes
 
@@ -38,4 +38,6 @@ WHEN = quando
 THEN = então
 ELSE = outro ou quando nenhum dos casos for aceitos
 END = encerrar o case
+
+o ELSE em uma expressão CASE no SQL não é obrigatório. O ELSE serve para fornecer um valor padrão caso nenhuma das condições anteriores seja atendida. Se ele não for usado e nenhuma condição for atendida, o CASE retornará NULL.
 
