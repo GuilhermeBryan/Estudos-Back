@@ -1,0 +1,16 @@
+views funcionaram como uma print, você salvara informações de alguma consulta utilizando o View, EX:
+
+CREATE VIEW profissao_e_clientes
+SELECT
+	cln.nome AS clientes
+	prof.nomeprofissao AS profissao
+FROM clientes AS cln
+	INNER JOIN profissao prof ON cln.idcliente = prof.idcliente 
+
+
+ali criamos o view e fizemos uma consulta, ou seja, as informações daquela consulta estão em um lugar so sem a necessidade de repetir o join.E para a consutarmos basta fazer
+
+SELECT * FROM profissao_e_clientes <- ira funcionar como uma consulta normal, como se fosse uma tabela normal com dados. (da para fazer filtros)
+
+DROP VIEW (para apagar sua view)
+

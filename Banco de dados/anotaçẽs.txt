@@ -77,7 +77,7 @@ ex: alter table cliente add numero
 
 chave dourada é primaria e chave prata estrangeira
 
-in <- insere tudo
+in <- serve para caso ter mais de um valor em uma consulta, caso haja apenas um valor apenas precisara de > = + e etc. (in significa inserir tudo)
 
 ex: in (1, 2, 3, 4)
 

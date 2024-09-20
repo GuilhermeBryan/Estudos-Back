@@ -997,3 +997,113 @@ FROM produtos
 --subconsultas
 --1. O nome dos clientes que moram na mesma cidade do Manoel. Não deve ser mostrado o Manoel.
 
+SELECT * FROM tabelafinal
+SELECT * FROM municipio
+
+SELECT 
+	nome,
+	municipio
+	
+FROM tabelafinal
+	 WHERE municipio = (SELECT municipio FROM tabelafinal WHERE idcliente = 1)
+AND
+	idcliente <> 1
+
+--2. A data e o valor dos pedidos que o valor do pedido seja menor que a média de todos os pedidos.
+	SELECT * FROM pedido2
+
+	SELECT 
+		data_pedido,
+		valor
+	FROM pedido2 
+		WHERE valor < (SELECT AVG(valor) FROM pedido2 )
+
+--3. A data,o valor, o cliente e o vendedor dos pedidos que possuem 2 ou mais produtos.
+SELECT * FROM produtos
+SELECT * FROM pedido_produto
+
+SELECT 
+	ped2.data_pedido,
+	ped2.valor,
+	tf.nome,
+	vend.nomevendedor,
+	(SELECT SUM(quantidade)FROM pedido_produto pp WHERE pp.idpedido = ped2.idpedido)
+FROM pedido2 ped2
+
+INNER JOIN tabelafinal tf ON tf.idcliente = ped2.idcliente 
+INNER JOIN vendedor vend ON vend.idvendedor = ped2.idvendedor
+	WHERE
+		(SELECT SUM(quantidade)FROM pedido_produto pp WHERE pp.idpedido = ped2.idpedido) >= 2
+
+--4.O nome dos clientes que moram na mesma cidade da transportadora BSTransportes.
+SELECT * FROM transportadora
+SELECT 
+	tf.nome,
+	trans.nometransportadora,
+	mun.nomemunicipio
+FROM tabelafinal tf
+INNER JOIN municipio mun ON tf.municipio = mun.idmunicipio 
+INNER JOIN transportadora trans ON trans.idmunicipio = mun.idmunicipio
+	WHERE idtransportadora = (SELECT idtransportadora FROM transportadora WHERE idtransportadora = 1)
+
+	SELECT * FROM tabelafinal
+	SELECT * FROM municipio
+	SELECT * FROM transportadora
+--5.O nome do cliente e o município dos clientes que estão localizados no mesmo município de qualquer uma das transportadoras.
+SELECT 
+	tf.nome,
+	trans.nometransportadora,
+	mun.nomemunicipio
+FROM tabelafinal tf
+INNER JOIN municipio mun ON tf.municipio = mun.idmunicipio 
+INNER JOIN transportadora trans ON trans.idmunicipio = mun.idmunicipio
+	WHERE idtransportadora in (SELECT idtransportadora FROM transportadora WHERE idtransportadora = 1 or idtransportadora = 2)
+--6. Atualizar o valor do pedido em 5% para os pedidos que o somatório do valor total dos produtos daquele pedido seja maior que a média do valor total
+SELECT * FROM pedido2
+UPDATE pedido2 SET valor = ((valor * 5)/100)
+WHERE valor > (SELECT AVG(valor) FROM pedido2)
+--7. O nome do cliente e a quantidade de pedidos feitos pelo cliente.
+SELECT * FROM pedido_produto
+SELECT 
+	tf.nome,
+	(SELECT COUNT(idpedido) FROM pedido2 ped2 WHERE tf.idcliente = ped2.idcliente) AS "pedidos feito pelo cliente"
+FROM tabelafinal tf
+
+--8. Para revisar, refaça o exercício anterior (número 07) utilizando group by e mostrando somente os clientes que fizeram pelo menos um pedido.	
+SELECT 
+	tf.nome,
+	(SELECT SUM(quantidade) FROM pedido_produto pp WHERE pp.idpedido = ped2.idpedido) AS "pedidos feito pelo cliente"
+FROM tabelafinal tf
+INNER JOIN pedido2 ped2 ON ped2.idcliente = tf.idcliente
+
+--VIEWS
+
+--1. O nome, a profissão, a nacionalidade, o complemento, o município, a unidade de federação, o bairro, o CPF,o RG, a data de nascimento, o gênero (mostrar
+--“Masculino” ou “Feminino”), o logradouro, o número e as observações dos clientes.
+
+CREATE VIEW agrupado 
+	SELECT
+		tf.nome,
+		prof.nomedaprofissao,
+		nac.nomenacional,
+		tf.complemento,
+		mun.nomemunicipio,
+		tf.uf,
+		tf.bairro,
+		tf.cpf,
+		tf.rg,
+		tf.data_de_nascimento,
+		CASE sexo
+		WHEN 'M' THEN 'Masculino'
+		WHEN 'F' THEN 'Feminino'
+		END AS genero,
+		logradouro,
+		numero
+	FROM tabelafinal tf
+	INNER JOIN profissoes prof ON tf.profissao = prof.idprofissao
+	INNER JOIN nacionalidades nac ON tf.nacionalidade = nac.idnacionalidade
+	INNER JOIN municipio mun ON tf.municipio = mun.idmunicipio
+	
+SELECT * FROM tabelafinal
+SELECT * FROM profissoes
+	

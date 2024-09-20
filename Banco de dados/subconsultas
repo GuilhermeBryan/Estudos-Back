@@ -1,0 +1,37 @@
+--subconsultas--
+
+EXEMPLOS:
+
+select 
+    data_pedido,
+    valor
+from
+    pedido
+    where
+        valor > (select avg(valor) from pedido)
+--exemplo com count--
+
+select 
+    pdd.data_pedido,
+    pdd.valor,
+    (select sum (quantidade)from pedido_produto pdp where pdp.idpedido = pdd.idpedido)
+from
+    pedido as pdd
+    
+--exemplo com update
+
+
+select * from pedido
+
+update pedido set valor = valor + ((valor * 5)/100)
+where valor > (select avg(valor) from pedido)
+
+select * from pedido_produto
+
+
+Serve para fazer uma consulta dentro de outra consulta.
+
+OBS:			
+
+é obrigatorio o uso de parenteses.
+caso for usar filtros como avg, sum e etc, usar dentro da tabela e parecido com Joins.
