@@ -1,0 +1,8 @@
+serviram para tornar um valor nulo mesmo sendo NOT NULL, para fazer com data:
+
+ALTER TABLE cliente ALTER COLUM data_aniversario SET DEFAULT CURRENT_DATE
+
+valor:
+
+ALTER TABLE pedido ALTER COLUMN valor SET DEFAULT 0
+

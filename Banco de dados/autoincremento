@@ -1,0 +1,32 @@
+este recurso sera usado para o Postgre gerar chaves primarias sequenciais (1, 2, 3...assim por diante), não sendo necessario informar o id do cliente por exemplo.
+
+EX DE USO:
+
+CREATE TABLE cliente (
+	idcliente serial NOT NULL,
+	nome varchar (30) NOT NULL, 
+	
+	CONSTRAINT pk_exemplo_idcliente PRIMARY KEY (idcliente)
+) 
+
+
+caso você utilize o autoincremento, não sera necessario usa-lo no INSERT INTO, ex:
+
+INSERT INTO cliente (nome) 
+	VALUES
+		(Roberto),
+		(Vini);
+		
+
+
+ele ira fazer uma sequencia automatica no id.
+
+como fazer a alteração em alguma tabela para fazer o autoincremento:
+EX:
+
+select MAX(idcliente) + 1 FROM bairro --o +1 não é necessario, apenas para fazer a inserção de outro dado.
+CREATE SEQUENCE cliente_id_seq minvalue 3
+ALTER TABLE cliente ALTER idcliente SET DEFAULT nextval('cliente_ids_seq')
+ALTER SEQUENCE bairro_id_seq OWNED BY cliente.idcliente
+
+ 

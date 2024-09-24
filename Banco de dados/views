@@ -1,6 +1,6 @@
 views funcionaram como uma print, você salvara informações de alguma consulta utilizando o View, EX:
 
-CREATE VIEW profissao_e_clientes
+CREATE VIEW profissao_e_clientes AS
 SELECT
 	cln.nome AS clientes
 	prof.nomeprofissao AS profissao

@@ -1,0 +1,3 @@
+utilizado para acelerar pesquisas especificas, forma de uso
+
+CREATE INDEX titulo ON tabela (coluna) 

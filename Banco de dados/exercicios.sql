@@ -1081,7 +1081,7 @@ INNER JOIN pedido2 ped2 ON ped2.idcliente = tf.idcliente
 --1. O nome, a profissão, a nacionalidade, o complemento, o município, a unidade de federação, o bairro, o CPF,o RG, a data de nascimento, o gênero (mostrar
 --“Masculino” ou “Feminino”), o logradouro, o número e as observações dos clientes.
 
-CREATE VIEW agrupado 
+CREATE VIEW agrupado AS 
 	SELECT
 		tf.nome,
 		prof.nomedaprofissao,
@@ -1106,4 +1106,122 @@ CREATE VIEW agrupado
 	
 SELECT * FROM tabelafinal
 SELECT * FROM profissoes
+
+
+--2.O nome do município e o nome e a sigla da unidade da federação.
+SELECT * FROM agrupado
+SELECT nomemunicipio, uf FROM agrupado
+--3.O nome do produto, o valor e o nome do fornecedor dos produtos.
+SELECT * FROM produtos
+SELECT * FROM fornecedor
+
+CREATE VIEW produtos_fornecedor AS
+SELECT 
+	prod.nomeprodutos,
+	prod.valor,
+	forn.nomefornecedor
+FROM produtos prod
+	INNER JOIN fornecedor forn ON prod.idfornecedor = forn.idfornecedor
+
+	SELECT * FROM produtos_fornecedor
+
+--4.O nome da transportadora, o logradouro, o número, o nome da unidade de federação e a sigla da unidade de federação das transportadoras.
+SELECT * FROM transportadora, tabelafinal, uf
+SELECT * FROM tabelafinal
+SELECT * FROM transportadora
+SELECT * FROM uf
+
+CREATE VIEW trans_clientes_uf AS
+SELECT 
+	trans.nometransportadora,
+	tf.logradouro,
+	tf.numero,
+	uniaofed.nomeuf,
+	uniaofed.sigla
+
+FROM transportadora trans
+	INNER JOIN tabelafinal tf ON trans.logradouro = tf.logradouro
+	INNER JOIN uf uniaofed ON uniaofed.sigla = tf.uf
+
+SELECT * FROM trans_clientes_uf
+
+--5.A data do pedido, o valor, o nome da transportadora, o nome do cliente e o nome do vendedor dos pedidos.
+SELECT * FROM pedido2
+
+CREATE VIEW informacoes AS
+SELECT
+	ped.data_pedido,
+	ped.valor,
+	trans.nometransportadora,
+	tf.nome,
+	vend.nomevendedor
+FROM pedido2 ped
+	INNER JOIN tabelafinal tf ON ped.idcliente = tf.idcliente
+	INNER JOIN transportadora trans ON ped.idtransportadora = trans.idtransportadora
+	INNER JOIN vendedor vend ON ped.idvendedor = vend.idvendedor 
+
+SELECT * FROM informacoes
+
+--6.O nome do produto, a quantidade, o valor unitário e o valor total dos produtos do pedido.
+SELECT * FROM pedido_produto
+SELECT * FROM produtos
+
+CREATE VIEW produto AS
+	SELECT
+		prod.nomeprodutos AS "nome dos produtos",
+		pp.quantidade AS "quantidade dos produtos",
+		pp.valor_unitario AS "valor unitario",
+		SUM(valor) AS "valor"
+	FROM produtos prod 
+		INNER JOIN pedido_produto pp ON prod.idproduto = pp.idproduto 
+	GROUP BY nomeprodutos, quantidade, valor_unitario ORDER BY nomeprodutos ASC
+
+--autoincremento
+
+CREATE TABLE exemplo (
+	idexemplo serial NOT NULL,
+	nome varchar (30) NOT NULL, 
+	
+	CONSTRAINT pk_exemplo_idexemplo PRIMARY KEY (idexemplo)
+)
+
+--Criar sequências para todas as outras tabelas da base de dados		
+
+SELECT MAX(idcliente) FROM tabelafinal
+CREATE SEQUENCE cliente_id_seq minvalue 16
+ALTER TABLE tabelafinal ALTER idcliente SET DEFAULT nextval ('cliente_id_seq')
+ALTER SEQUENCE cliente_id_seq OWNED BY tabelafinal.idcliente
+
+SELECT * FROM tabelafinal
+INSERT INTO tabelafinal (nome, cpf, rg, data_de_nascimento, sexo, logradouro, numero, uf, profissao, nacionalidade, complemento, bairro, municipio)
+	VALUES ('teste', '12345678901', '1234', '20/05/2007', 'M', 'teste', '12', 'sc', 2, 1, 1, 1, 1)
+
+--1. Adicione valores default na tabela de produtos do pedido
+SELECT MAX(idpedido) FROM pedido2
+CREATE SEQUENCE ped_id_seq minvalue 16
+ALTER TABLE pedido2 ALTER idpedido SET DEFAULT nextval ('ped_id_seq')
+ALTER SEQUENCE ped_id_seq OWNED BY pedido2.idpedido
+ALTER TABLE pedido2 ALTER COLUMN valor SET DEFAULT 0
+INSERT INTO pedido2 (idcliente, idtransportadora, idvendedor, data_pedido)
+VALUES (16, 1, 2, '2008/04/01')
+SELECT * FROM pedido2
+
+--indices
+
+--1. Adicione índices nas seguintes tabelas e campos
+--pedido - data pedido
+--produto - nome
+CREATE INDEX prod_nome ON produtos (nomeprodutos)
+DROP INDEX prod_nome --para apagar a index
+
+
+
+	
+	
+
+
+
+
+
+	
 	
