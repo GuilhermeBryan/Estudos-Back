@@ -1,0 +1,32 @@
+Para criar uma variavel de numeros faremos o seguinte algoritmo:
+
+(tipo de variavel) (nome da variavel) (sinal) (valor);
+
+INT = inteiro
+
+int y = 32;
+
+para fazer mostrar basta:
+
+System.out.print(variavel);
+
+DOUBLE:
+DOUBLE x = 10.9842
+
+System.out.println(x);
+
+ira aparecer 10.9842
+
+vamos supor que quero apenas 10.98 então farei o comando
+
+System.out.printf("%0.2f%n", x)
+
+(caso tenha o %n tera quebra de linha) mas caso não queira quebra de linha basta 
+
+System.out.printf("%.2f", x);
+
+
+ira aparecer 10,98 (caso queira quatro casas por exemplo, basta trocar o 2 por 4 e assim por diante com outros numeros) EX:
+
+System.out.printf("%.4f%n", x);
+

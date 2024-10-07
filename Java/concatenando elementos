@@ -1,0 +1,19 @@
+Para concaternamos, ou seja, juntarmos comandos e variaveis basta, vamos supor o seguinte codigo.
+
+DOUBLE y = 10.00;
+
+INT x = 2;
+
+para juntarmos e fazermos uma soma por exemplo destas variaveis, podemos fazer
+
+System.out.println(y + x); --podemos colocar tambem frases EX:
+
+System.out.println("Numero um = " + x + " Teste.");
+
+ira aparecer: 
+Numero um = 10.9824 Teste.
+
+utilizando o printf:
+
+System.out.printf ("RESULTADO = %.2f metros%n", x);
+
