@@ -1,0 +1,27 @@
+utilizando o Scanner:
+
+	import java.util.Scanner; //importando a função scanner
+
+
+        Scanner sc = new Scanner(System.in); //criando o scanner (System.in) <- teclado do terminal, dispositivo de entrada 
+
+        String palavra; //variavel que sera utilizada no scanner
+        palavra = sc.next(); //sc.next para digitar (nextint caso for digitar apenas numero) (nextdouble caso for numero flutuante)
+        System.out.println("você digitou:" + palavra); //fazendo aparecer no terminal 
+
+        palavra.close(); //fechando o scanner	
+        
+   
+   
+ NeextLine para fazer a quebra de linha utilizando da seguinte forma:
+ 
+ String x, y, z;
+ 
+ x = sc.nextline();
+ y = sc.netxtline ();
+ z = sc.nextline ();
+ 
+ System.out.println("DADOS DIGITADOS:");
+ System.out.println(x);
+ System.out.println(y);
+ system.out.println(z);	
