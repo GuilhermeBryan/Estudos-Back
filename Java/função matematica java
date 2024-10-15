@@ -1,0 +1,11 @@
+como utilizar: (SIMULANDO UM CÓDIGO)
+
+double x = 2.0;
+double y = 3.0;
+double A, B, C;
+
+A = Math.sqrt (x); //raiz_quadrada
+B = Math.pow(x, y);     //potencia
+C = Math.abs(x); //valor_absoluto 
+
+(nome da variavel) = Raiz quadrada (variavel com o numero);

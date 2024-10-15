@@ -1,0 +1,27 @@
+&& <- "E"
+|| <- "OU"
+! <- "NÃO"
+
+E <- o "E" aceita apenas se as duas condições forem verdadeiras, caso uma seja falsa, ele dara errado, EX:
+
+//SUPONHA QUE X É 5
+
+int x = 5;
+
+x <= 20 && x == 10; <- esta expressão sera falsa, pois 5 não é igual a dez.
+
+x <= 20 && x > 0; <- esta expressão sera verdadeira, pois as duas condições são verdadeiras
+
+OU <- o "OU" aceita tanto condições verdadeiras, quanto falsas, contanto que uma das condições sejam verdadeiras, EX:
+
+int x = 5;
+
+x <= 20 || x == 10; <- esta expressão sera verdadeira pois uma das condições são verdadeiras.
+
+x == 10 || x == 20; <- esta expressão sera falsa pois as duas condições são falsas.
+
+NÃO <- o "não" invertera a condição, se ela for falsa, se tornara verdadeira, e caso seja verdadeira, se tornara falsa, ex:
+
+int x = 5;
+
+!(x == 20;) //esta expressão é falsa, mas como tem o NÃO, ela se torna verdadeira.
