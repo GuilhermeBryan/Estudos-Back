@@ -1,0 +1,5 @@
+O método nextLine() da classe Scanner em Java é utilizado para ler uma linha inteira de entrada do usuário, incluindo espaços em branco até o caractere de nova linha (\n).
+
+O nextInt() lê apenas o número e deixa o caractere de nova linha (\n) no buffer de entrada, então ao chamar nextLine(), ele lê o que restou no buffer, que é apenas o \n, fazendo parecer que o programa "pula" a entrada.
+
+Por isso, sempre que for necessário misturar leitura de números (nextInt(), nextDouble(), etc.) e leitura de texto completo (nextLine()), você precisa limpar o buffer com um nextLine() extra após a leitura numérica.

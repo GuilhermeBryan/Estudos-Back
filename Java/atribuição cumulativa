@@ -1,0 +1,5 @@
+atribuição cumulativa ex:
+
+a += b; //o "+=" equivale a "a = a + b;" ou seja, ele esta dizendo de forma simplificada que uma variavel recebe ela mesma e atribui junto de outra variavel, poupando você de fazer por exemplo
+
+a = a + b; 

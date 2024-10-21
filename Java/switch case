@@ -1,0 +1,45 @@
+Switch case:
+
+situação problema: fazer um programa para ler um valor inteiro de 1 a 7 representando um dia da semana (sendo 1 = domingo, 2 = segunda, e assim por diante).Esta opção é parecida com o if mas de forma mais simples.
+
+o código:
+
+int x = sc.nextInt(); //a variavel x é inteira
+String dia;
+
+switch (x); aqui ele esta avaliando o meu numero que sera digitado.
+
+case 1: //<-- caso seja digitado isso
+	dia = "domingo";
+break; //obrigatorio a cada caso
+
+case 2:
+	dia = "segunda";
+break;
+
+case 3: 
+	dia = "terça";
+break;
+
+case 4: 
+	dia = "quarta";
+break;
+
+case 5: 
+	dia = "quinta";
+break;
+
+case 6:
+	dia = "sexta";
+break
+
+case 7: 
+	dia = "sabado";
+	
+default: //aqui caso todas falhem o default aparecera o que você quiser, neste caso sera valor invalido
+	dia = "valor invalido";
+break;
+
+	dia = "valor inválido";
+break;
+
