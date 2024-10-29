@@ -1,0 +1,10 @@
+Sintaxe/regra
+
+estrutura:
+
+do {
+    comando 1
+    comando 2
+} while (condição)	
+
+//basicamente ele executara primeiro todo o comando para depois verificar a condição, caso ela seja falsa, ele pulara.
