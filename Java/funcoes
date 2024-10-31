@@ -1,0 +1,33 @@
+a função sera para me retornar o que eu pedir em outras classes e seu código principal, ex
+
+MAIN:
+
+
+
+System.out.println("escreva três numeros");
+int a = sc.nextInt;
+int b = sc.nextInt;
+int c = sc.nextInt;
+
+int maior = funcao(a, b, c) <-- minha funcao tera que retornar o maior numero, onde guarde a funcao na variavel maior, e as variaveis a b c se tornaram as variaveis x y z
+
+System.out.println(maior) 
+
+
+criando minha função:
+
+public static int funcao(int x, int y, int z) {
+ //entre as chaves estara a lógica da minha função
+ int aux
+ 
+ if (x > y && x > z) {
+ 	aux = x
+ }
+ else if (y > x && y > z) {
+ 	aux = y
+ }
+ else {
+ 	aux = z
+ }
+ return aux; <--ele retornara o maior numero ao meu main
+
