@@ -1,0 +1,5 @@
+Criar a interface e seu método mover
+Criar a classe abstrata veiculo para fazer o metodo calcular preço e atributos
+fazer o acordo da interface e a classe abstrata veiculo
+fazer as classes Moto, Carro, Caminhao e fazer elas herdarem tudo da classe veiculo
+

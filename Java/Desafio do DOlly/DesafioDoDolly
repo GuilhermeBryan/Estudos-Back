@@ -1,0 +1,20 @@
+Exercício: Sistema de Locadora de Veículos
+
+Cenário
+Em uma locadora de veículos, temos diversos tipos de veículos disponíveis para aluguel, como Carros, Motos e Caminhões. Cada tipo de veículo possui características específicas e uma capacidade de locomoção diferente.
+
+Objetivo
+Implementar um sistema de classes que permita:
+1. Registrar e exibir informações sobre os veículos da locadora.
+2. Calcular o preço do aluguel de cada tipo de veículo.
+3. Simular o movimento de cada veículo.
+
+Regras
+1. Todos os Veículos devem implementar uma interface Movimentavel, que define o método mover(int x, int y), simulando o movimento do veículo.
+2. A locadora possui uma classe abstrata Veiculo que possui atributos comuns aos veículos, como:
+   - String modelo (modelo do veículo),
+   - String placa (placa do veículo),
+   - double precoPorDia (preço do aluguel por dia).
+   - Um método abstrato calcularPreco(int dias) que retorna o custo total do aluguel com base no número de dias.
+3. Todos os veículos herdam de Veiculo e implementam o método calcularPreco. No cálculo, carros têm um acréscimo de 10% sobre o preço diário, caminhões um acréscimo de 20%, e motos têm um desconto de 5%.
+4. Classes concretas Carro, Moto e Caminhao herdam de Veiculo e implementam o método mover, cada uma com uma mensagem distinta ao se mover.
