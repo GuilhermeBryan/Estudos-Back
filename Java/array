@@ -1,0 +1,18 @@
+array ou vetores funcionam como uma lista fixa, e que caso por exemplos seja int, podera apenas ser int
+
+
+problema exemplo:meu usuario quer escrever 3 tipos de alturas utilizando o vetor.
+
+resolvendo:
+
+double[] nomedavariavel = new double //tipo da variavel [n] //tamanho do vetor
+
+//criando laço for
+
+for(i = 0; i < n; i++) {
+	nomedavariavel //nome do meu vetor [i] = sc.nextDouble();
+}
+
+aqui basicamente ele esta pegando o vetor que começa com 0, o usuario ira definir o quanto ele quer na lista e o for ira repetir ate chegar no limite que o usuario pediu, e assim os valores do vetor vao ser atribuidos de acordo com o valor que o usuario digitar.
+
+obs (vect.lenght é a quantidade de posições que existe no vetor, nesse caso eu não precisaria da variavel n, poderia fazer i < vect.lenght) 
